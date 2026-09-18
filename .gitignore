@@ -1,0 +1,11 @@
+# Environment variables (passwords, API keys)
+.env
+
+# Database (customer data)
+data/
+
+# Uploaded images
+public/uploads/
+
+# Node modules
+node_modules/

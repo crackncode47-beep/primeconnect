@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/plans", "destination": "/" },
+    { "source": "/signup", "destination": "/" },
+    { "source": "/thank-you", "destination": "/" },
+    { "source": "/privacy", "destination": "/" }
+  ]
+}

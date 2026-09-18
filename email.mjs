@@ -1,0 +1,6 @@
+export async function notifyRequest(id,data){
+ if(!process.env.RESEND_API_KEY||!process.env.EMAIL_FROM)return 'not_configured';
+ const {firstName,lastName,email,phone,address,selection,pricing,note}=data;
+ const text=[`New PrimeConnect service request: ${id}`,`Name: ${firstName} ${lastName}`,`Email: ${email}`,`Phone: ${phone}`,`Address: ${address.line1}, ${address.city}, ${address.province} ${address.postalCode}`,`Internet: ${selection.speed} Mbps — $${pricing.internet}/month`,`TV: ${selection.tv} — $${pricing.television}/month`,`Home phone: $${pricing.homePhone}/month`,`Auto-pay: ${selection.autopay?'Yes':'No'}`,`Monthly total: $${pricing.total} before taxes`,pricing.promo?'Promotion: 2 months free internet and selected TV. Home phone excluded.':'',`Note: ${note||'None'}`,'Date of birth is stored securely on the server and excluded from email.'].filter(Boolean).join('\n');
+ try{const response=await fetch('https://api.resend.com/emails',{method:'POST',headers:{Authorization:`Bearer ${process.env.RESEND_API_KEY}`,'Content-Type':'application/json','Idempotency-Key':id},body:JSON.stringify({from:process.env.EMAIL_FROM,to:[process.env.LEAD_EMAIL||'raf77c@gmail.com'],subject:'New PrimeConnect service request',text}),signal:AbortSignal.timeout(10000)});return response.ok?'sent':'failed';}catch{return 'failed';}
+}

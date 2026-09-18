@@ -1,0 +1,4 @@
+.env
+data/
+server.mjs
+.DS_Store
