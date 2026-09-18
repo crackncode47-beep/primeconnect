@@ -1,10 +1,16 @@
 {
   "version": 2,
   "cleanUrls": true,
+  "outputDirectory": "public",
+  "buildCommand": "",
+  "installCommand": "npm install",
+  "framework": null,
   "rewrites": [
-    { "source": "/plans", "destination": "/" },
-    { "source": "/signup", "destination": "/" },
-    { "source": "/thank-you", "destination": "/" },
-    { "source": "/privacy", "destination": "/" }
+    { "source": "/api/address/find", "destination": "/api/address/find" },
+    { "source": "/api/requests", "destination": "/api/requests" },
+    { "source": "/plans", "destination": "/index.html" },
+    { "source": "/signup", "destination": "/index.html" },
+    { "source": "/thank-you", "destination": "/index.html" },
+    { "source": "/privacy", "destination": "/index.html" }
   ]
 }

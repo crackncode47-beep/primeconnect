@@ -9,3 +9,6 @@ public/uploads/
 
 # Node modules
 node_modules/
+
+.vercel
+.env*
